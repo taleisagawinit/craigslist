@@ -1,0 +1,33 @@
+html {box-sizing:border-box;}
+*, *::before, *::after {box-sizing:inherit;}
+
+.container {
+  width: 1000px;
+  height: 800px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container > div {
+  border: 2px solid lightgray;
+}
+
+.heading {
+  width: 200px;
+}
+
+.cities {
+  width: 150px;
+}
+
+.list {
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+.parent {
+  display: flex;
+  flex-direction: column;
+}
+
