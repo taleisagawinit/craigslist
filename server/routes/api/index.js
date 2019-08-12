@@ -3,9 +3,7 @@ const conn = require('../../db')
 
 
 
-
-// this one make the data into objects and is kinda confusing
-router.get('/all', (req, res, next) => {
+router.get('/lasvegas', (req, res, next) => {
   const sql = `
   SELECT c.name, c.slug, c.id, p.name as parentName, p.id as parentId, p.slug as parentSlug 
   FROM categories c 
@@ -34,27 +32,20 @@ router.get('/all', (req, res, next) => {
   })
 })
 
+// let param = props.match.params.subcategory 
 
-router.get('/home', (req, res, next) => {
-  const sql = `
-  SELECT name FROM categories WHERE parent_id IS NULL
-  `
-  conn.query(sql, (error, results, fields) => {
-    console.log(results)
-    res.json(results)
-  })
-})
+// router.get(`/${param}`, (req, res, next) => {
+//   const sql = `
+//   SELECT * 
+//     FROM subcategories
+//     WHERE slug LIKE '%${param}%'
+//   `
+//   conn.query(sql, (error, results, fields) => {
+//     return results
+//   })
+//   res.json(results)
+// })
 
-
-router.get('/', (req, res, next) => {
-  const sql = `
-  SELECT name FROM categories WHERE parent_id IS NOT NULL
-  `
-  conn.query(sql, (error, results, fields) => {
-    console.log(results)
-    res.json(results)
-  })
-})
 
 
 

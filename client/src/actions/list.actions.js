@@ -1,24 +1,19 @@
 import store from '../store'
 import axios from 'axios'
 
-export function getMainCat() {
-  axios.get('api/home').then(resp => {
-    console.log((resp.data).map(item => item.name))
-    let data = (resp.data).map(item => item.name)
+
+export function allCategories() {
+  axios.get('api/lasvegas').then(resp => {
+    console.log(resp.data)
     store.dispatch({
       type: 'CATEGORY',
-      payload: data
+      payload: resp.data
     })
   })
 }
 
-export function getSubCat() {
-  axios.get('api/').then(resp => {
-    console.log((resp.data).map(item => item.name))
-    let sub = (resp.data).map(item => item.name)
-    store.dispatch({
-      type: 'SUBC',
-      payload: sub
-    })
+export function getSubcategory(param) {
+  axios.get(`api/${param}`).then(resp => {
+    console.log(resp.data)
   })
 }
