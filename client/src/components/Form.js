@@ -1,26 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { getCurrentCategory, post } from '../actions/list.actions'
 
 export default props => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const category = useSelector(appState => appState.current);
+
+  useEffect(() => {
+    getCurrentCategory(props.match.params.subcategory)
+  }, [props.match.params.subcategory])
+      
+  function handleSubmit(e) {
+    e.preventDefault()
+    post(title, content, props.match.params.subcategory)
+  }
   return (
     <div className="form">
       <header>
-        <Link to="/lasvegas">CL</Link>
+        <Link to="/">CL</Link>
+        <p>Posting to: {category}</p>
       </header>
-      <form>
-        <div>
-          <label htmlFor="title">posting title</label>
-          <input id="title" type="text"></input>
-          <label htmlFor="city">city or neighborhood</label>
-          <input id="city" type="text"></input>
-          <label htmlFor="zip">postal code</label>
-          <input id="zip" type="text"></input>
-        </div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="title">posting title</label>
+        <input id="title" type="text" value={title} onChange={e => setTitle(e.target.value)}></input>
         <label htmlFor="description">description</label>
-        <textarea id="description">
-
-        </textarea>
-        
+        <textarea id="description" value={content} onChange={e => setContent(e.target.value)}></textarea>
+        <button>post</button>
       </form> 
     </div>
    

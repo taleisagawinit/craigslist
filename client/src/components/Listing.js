@@ -20,10 +20,10 @@ export default props => {
     <div className="main">
       <p>las vegas</p> 
       <div className="categories">
-        {all.map(obj => obj.map(item => 
+        {all.map(item => 
         <div key={i++}>
           <Link to={"/" + item.slug}>
-            <h3>{item.name}</h3>      
+            <h3 id={'parent' + item.slug}>{item.name}</h3>      
           </Link>
         <div className="section">
           <ul className="subsection" id={item.slug}>
@@ -34,7 +34,7 @@ export default props => {
           </ul>
         </div>
        </div>
-      ))}
+      )}
       </div>
     </div>
     <Cities />

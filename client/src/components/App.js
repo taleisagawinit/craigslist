@@ -4,10 +4,9 @@ import '../styles/App.css'
 import { Provider } from 'react-redux'
 import store from '../store'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Listing from './Listing';
 import Subcategory from './Subcategory'
-import Post from './Post'
 import Form from './Form'
+import Home from './Home'
 
 export default props => {
   return (
@@ -15,10 +14,9 @@ export default props => {
       <Router>
         <div className="container">
           <Switch>
-          <Route path="/lasvegas" component={Listing}/>
-          <Route path="/:subcategory" component={Subcategory} />
-          <Route path ="/:subcategory/post" component={Post} />
-          <Route path ="/post/form" component={Form} />
+            <Route exact path="/" component={Home}/>
+            <Route  exact path="/:subcategory" component={Subcategory} />
+            <Route  exact path="/:subcategory/post/" component={Form} />
           </Switch>
         </div>
       </Router>

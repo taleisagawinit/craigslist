@@ -26,7 +26,7 @@ export default props => {
           <li>help, faq, abuse, legal</li>
           <li>avoid scams and fraud</li>
           <li>personal safety and tips</li>
-          <li>terms of use (insert new icon)</li>
+          <li>terms of use</li>
           <li>privacy policy</li>
           <li>system status</li>
         </ul>
